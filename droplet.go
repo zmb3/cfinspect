@@ -36,7 +36,7 @@ func (p *inspectPlugin) droplet(conn plugin.CliConnection, args []string) error 
 		return fmt.Errorf("couldn't read %s: %v", fname, err)
 	}
 
-	dump(os.Stdout, contents)
+	dump(p.out, contents)
 	fmt.Fprintln(p.out)
 	fmt.Fprintln(p.out, "-- Droplet saved to", fname)
 	return nil
@@ -80,7 +80,7 @@ func dump(w io.Writer, contents []*tar.Header) {
 		case tar.TypeReg:
 			fmt.Fprintf(w, "f       %-40s %d\n", header.Name, header.Size)
 		default:
-			fmt.Fprintf(w, "u   [Unknown Entry]\n")
+			fmt.Fprintf(w, "?   [Unknown Entry]\n")
 		}
 	}
 }
