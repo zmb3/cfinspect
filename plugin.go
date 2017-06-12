@@ -33,7 +33,7 @@ func (p *inspectPlugin) Run(conn plugin.CliConnection, args []string) {
 	var err error
 	switch args[0] {
 	case hostCommand:
-		err = p.host(conn, args[1:])
+		//err = p.host(conn, args[1:])
 	case dropletCommand:
 		err = p.droplet(conn, args[1:])
 	default:
